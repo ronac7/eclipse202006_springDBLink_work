@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.dept.dao.DeptMapper">
+
+	<resultMap type="a.b.c.com.dept.vo.DeptVO" id="deptVO">
+		<result property="deptid" 	column="Dept_ID" />
+		<result property="deptname" column="Dept_Name" />
+		<result property="depttel" column="Dept_Tel" />
+		<result property="deleteyn" column="Delete_YN" />
+	</resultMap>
+	
+	<select id="listDepartment" parameterType="a.b.c.com.dept.vo.DeptVO" resultMap="deptVO">
+	<!-- Mapper-listDepartment -->
+		SELECT
+				Dept_ID,
+				Dept_NAME,
+				Dept_Tel,
+				Delete_YN
+		FROM	DEPARTMENT
+		WHERE	DELETE_YN = 'Y'
+		<where>
+			<if test='deptname != null and deptname != ""'>
+				DEPT_NAME LIKE '%' || #{deptname} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectDepartment" parameterType="java.lang.String" resultMap="deptVO">
+	<!-- Map per selectDepartment -->
+		SELECT
+				Dept_ID,
+				Dept_NAME,
+				Dept_Tel,
+				Delete_YN
+		FROM 	DEPARTMENT
+		WHERE 	DEPT_ID = #{deptid}
+	</select>
+	
+	<insert id="insertDepartment" parameterType="a.b.c.com.dept.vo.DeptVO">
+	<!-- Mapper insertDepartment -->
+		INSERT INTO DEPARTMENT
+			( DEPT_ID, DEPT_NAME, DEPT_TEL, DELETE_YN)
+		VALUES
+			( #{deptid}, #{deptname}, #{depttel}, 'Y' )
+	</insert>
+	
+	<update id="updateDepartment" parameterType="a.b.c.com.dept.vo.DeptVO">
+		<!-- Mapper-updateDepartment -->
+		UPDATE DEPARTMENT
+		SET DEPT_NAME = #{deptname},
+			DEPT_TEL = #{depttel}
+		WHERE DEPT_ID = #{deptid}
+		AND DELETE_YN = 'Y'
+	</update>
+	
+	<delete id="deleteDepartment" parameterType="a.b.c.com.dept.vo.DeptVO">
+	<!-- Mapper deleteDepartment -->
+		UPDATE DEPARTMENT
+		SET DELETE_YN = 'N'
+		WHERE DEPT_ID = #{deptid}
+		AND DELETE_YN = 'Y'
+	</delete>
+	
+</mapper>

@@ -10,6 +10,9 @@
 </style>
 </head>
 <body>
-	<div><a href="department/listDepartment.jj">[학과 데이터]</a></div>
+	<div>
+		<a href="department/listDepartment.jj">[학과 데이터]</a>
+		<a href="lesson/listLesson.jj">[과목 데이터]</a>
+	</div>
 </body>
 </html>

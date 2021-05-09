@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="a.b.c.com.dao.ChabunDAO">
+	<resultMap type="a.b.c.com.lesson.vo.LessonVO" id="lessonVO">
+		<result property="no" column="NO"/>
+		<result property="lnum" column="L_NUM"/>
+		<result property="lname" column="L_name"/>
+	</resultMap>
+
+<select id="getLessonChabun" resultMap="lessonVO">
+	SELECT NVL(MAX(SUBSTR(A.DEPT_ID, -4)), 0) + 1 DEPT_ID 
+	FROM LESSON A
+</select>
+
+</mapper>

@@ -37,12 +37,14 @@ public class DepartmentController {
 	@RequestMapping("/selectDepartment")
 	public ModelAndView selectDepartment(@ModelAttribute DeptVO param) {
 		
+		List<DeptVO> list = deptService.selectDepartment(param);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		if (param.getDeptid().equals("")) { // 등록 버튼 클릭시
 			mav.addObject("mode", "insert");
 		} else { //[수정/삭제] 버튼 클릭시
-			mav.addObject("DeptVO", param);
+			mav.addObject("DeptVO", list.get(0));
 			mav.addObject("mode", "update");
 		}
 		

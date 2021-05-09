@@ -18,6 +18,7 @@
 	}
 	
 	function updatePopup(deptid) {
+		$("#deptid").val(deptid);
 		window.open("", "pop", "width=480, height=280");
 		$("#popupForm").attr("action", "/department/selectDepartment.jj");
 		$("#popupForm").attr("target","pop");

@@ -10,7 +10,7 @@
 <script type="text/javascript">
 
 	function insertPopup() {
-		$("#no").val(0);
+		$("#no").val("");
 		window.open("", "pop", "width=480, height=250");
 		$("#popupForm").attr("action", "/lesson/selectLesson.jj");
 		$("#popupForm").attr("target","pop"); $("#popupForm").submit();

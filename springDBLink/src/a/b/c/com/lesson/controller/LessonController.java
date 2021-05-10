@@ -49,7 +49,7 @@ public class LessonController {
 		logger.info("LessonController selectLesson no >>> : " + param.getNo());
 		
 		ModelAndView mav = new ModelAndView();
-		if (param.getNo() == 0) {
+		if (param.getNo().equals("")) {
 			mav.addObject("mode", "insert");
 		} else {
 			mav.addObject("lessonVO", list.get(0));

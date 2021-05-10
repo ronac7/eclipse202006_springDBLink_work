@@ -2,15 +2,15 @@ package a.b.c.com.lesson.vo;
 
 public class LessonVO {
 	
-	private int no;
+	private String no;
 	private String lnum;
 	private String lname;
 	
 	
-	public int getNo() {
+	public String getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(String no) {
 		this.no = no;
 	}
 	public String getLnum() {
